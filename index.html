@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inchon Institute - Professional Certification Programs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>معهد انشون - برامج شهادات احترافية | Inchon Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@300;400;600;700;800&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,10 +13,42 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Cairo', 'Montserrat', sans-serif;
             overflow-x: hidden;
             background: #000;
             color: #fff;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle:hover {
+            background: rgba(138, 43, 226, 0.3);
+            border-color: rgba(138, 43, 226, 0.5);
+            transform: scale(1.05);
+        }
+
+        .language-toggle button {
+            background: none;
+            border: none;
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 10px;
         }
 
         /* ANIMATED GALAXY BACKGROUND */
@@ -188,7 +220,7 @@
 
         .hero-title {
             font-size: 4rem;
-            font-weight: 800;
+            font-weight: 900;
             margin-bottom: 25px;
             background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
             -webkit-background-clip: text;
@@ -223,7 +255,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
@@ -244,6 +276,8 @@
         .department-card:nth-child(2) { animation-delay: 0.2s; }
         .department-card:nth-child(3) { animation-delay: 0.3s; }
         .department-card:nth-child(4) { animation-delay: 0.4s; }
+        .department-card:nth-child(5) { animation-delay: 0.5s; }
+        .department-card:nth-child(6) { animation-delay: 0.6s; }
 
         @keyframes slideInScale {
             from { opacity: 0; transform: translateY(50px) scale(0.9); }
@@ -308,16 +342,27 @@
 
         .course-item {
             margin: 10px 0;
-            padding-left: 20px;
+            padding-right: 20px;
             position: relative;
         }
 
+        [dir="rtl"] .course-item {
+            padding-right: 20px;
+            padding-left: 0;
+        }
+
         .course-item::before {
-            content: '→';
+            content: '←';
             position: absolute;
-            left: 0;
+            right: 0;
             color: #7B2FFF;
             font-weight: bold;
+        }
+
+        [dir="ltr"] .course-item::before {
+            content: '→';
+            left: 0;
+            right: auto;
         }
 
         .dept-info {
@@ -434,8 +479,33 @@
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Cairo', 'Montserrat', sans-serif;
             transition: all 0.3s ease;
+        }
+
+        /* Fix phone number direction - always LTR */
+        input[type="tel"] {
+            direction: ltr;
+            text-align: left;
+        }
+
+        [dir="rtl"] input[type="tel"] {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Fix contact phone numbers direction */
+        .contact-item span:last-child {
+            direction: ltr;
+            display: inline-block;
+        }
+
+        [dir="rtl"] .contact-item {
+            direction: rtl;
+        }
+
+        [dir="rtl"] .contact-item span:last-child {
+            direction: ltr;
         }
 
         input:focus, select:focus, textarea:focus {
@@ -462,6 +532,7 @@
             box-shadow: 0 10px 40px rgba(255,107,53,0.4);
             position: relative;
             overflow: hidden;
+            font-family: 'Cairo', sans-serif;
         }
 
         .submit-btn::before {
@@ -571,6 +642,10 @@
             transform: translateX(10px);
         }
 
+        [dir="rtl"] .contact-item:hover {
+            transform: translateX(-10px);
+        }
+
         .contact-icon {
             font-size: 1.5rem;
         }
@@ -588,6 +663,10 @@
             transform: translateX(5px);
         }
 
+        [dir="rtl"] .quick-links a:hover {
+            transform: translateX(-5px);
+        }
+
         .footer-bottom {
             text-align: center;
             margin-top: 50px;
@@ -600,7 +679,7 @@
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px;
             background: #25D366;
             color: white;
             width: 70px;
@@ -615,6 +694,7 @@
             transition: all 0.3s ease;
             z-index: 1000;
             animation: pulse 2s infinite;
+            text-decoration: none;
         }
 
         @keyframes pulse {
@@ -629,7 +709,8 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .institute-name {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
+                letter-spacing: 2px;
             }
 
             .logo {
@@ -643,7 +724,11 @@
             }
 
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
 
             .departments-grid {
@@ -661,10 +746,20 @@
             .map-container iframe {
                 height: 400px;
             }
+
+            .language-toggle {
+                top: 90px;
+                right: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button onclick="toggleLanguage()" id="langBtn">EN</button>
+    </div>
+
     <!-- ANIMATED GALAXY BACKGROUND -->
     <div class="galaxy-bg">
         <canvas id="galaxyCanvas"></canvas>
@@ -677,91 +772,125 @@
     <header>
         <div class="logo-section">
             <div class="logo">🎓</div>
-            <h1 class="institute-name">INCHON INSTITUTE</h1>
+            <h1 class="institute-name">معهد انشون</h1>
         </div>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#courses">Courses</a>
-            <a href="#admissions">Admissions</a>
-            <a href="#contact">Contact</a>
+            <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+            <a href="#courses" data-ar="الدورات" data-en="Courses">الدورات</a>
+            <a href="#admissions" data-ar="التسجيل" data-en="Admissions">التسجيل</a>
+            <a href="#contact" data-ar="اتصل بنا" data-en="Contact">اتصل بنا</a>
         </nav>
     </header>
 
     <!-- HERO SECTION -->
     <section id="home" class="hero-section">
-        <h2 class="hero-title">Lead Your Future with Excellence</h2>
-        <p class="hero-subtitle">Professional Certification in Tech, Finance, Healthcare & Management</p>
+        <h2 class="hero-title" data-ar="قود مستقبلك بالتميز" data-en="Lead Your Future with Excellence">قود مستقبلك بالتميز</h2>
+        <p class="hero-subtitle" data-ar="شهادات احترافية في التكنولوجيا، المالية، الصحة والإدارة" data-en="Professional Certification in Tech, Finance, Healthcare & Management">شهادات احترافية في التكنولوجيا، المالية، الصحة والإدارة</p>
     </section>
 
     <!-- COURSE DEPARTMENTS -->
     <section id="courses" class="departments-section">
-        <h2 class="section-title">Our Departments</h2>
+        <h2 class="section-title" data-ar="أقسامنا" data-en="Our Departments">أقسامنا</h2>
         <div class="departments-grid">
             <!-- COMPUTER SCIENCE -->
             <div class="department-card">
                 <span class="dept-icon">💻</span>
-                <h3 class="dept-title">Computer Science</h3>
+                <h3 class="dept-title" data-ar="علوم الحاسوب" data-en="Computer Science">علوم الحاسوب</h3>
                 <div class="dept-courses">
-                    <div class="course-item">Web Development (Full Stack)</div>
-                    <div class="course-item">Data Science & Analytics</div>
-                    <div class="course-item">Basic IT & Networking</div>
-                    <div class="course-item">Python Programming</div>
-                    <div class="course-item">Cloud Computing (AWS/Azure)</div>
+                    <div class="course-item" data-ar="تطوير الويب (Full Stack)" data-en="Web Development (Full Stack)">تطوير الويب (Full Stack)</div>
+                    <div class="course-item" data-ar="علوم البيانات والتحليلات" data-en="Data Science & Analytics">علوم البيانات والتحليلات</div>
+                    <div class="course-item" data-ar="أساسيات تقنية المعلومات والشبكات" data-en="Basic IT & Networking">أساسيات تقنية المعلومات والشبكات</div>
+                    <div class="course-item" data-ar="برمجة بايثون" data-en="Python Programming">برمجة بايثون</div>
+                    <div class="course-item" data-ar="الحوسبة السحابية (AWS/Azure)" data-en="Cloud Computing (AWS/Azure)">الحوسبة السحابية (AWS/Azure)</div>
                 </div>
                 <div class="dept-info">
-                    <span class="info-badge">12-18 Months</span>
-                    <span class="info-badge">₹75,000 - ₹1,20,000</span>
+                    <span class="info-badge" data-ar="12-18 شهر" data-en="12-18 Months">12-18 شهر</span>
+                    <span class="info-badge">75,000 - 1,20,000</span>
                 </div>
             </div>
 
             <!-- ACCOUNTING -->
             <div class="department-card">
                 <span class="dept-icon">📊</span>
-                <h3 class="dept-title">Accounting & Finance</h3>
+                <h3 class="dept-title" data-ar="المحاسبة والمالية" data-en="Accounting & Finance">المحاسبة والمالية</h3>
                 <div class="dept-courses">
-                    <div class="course-item">Tally ERP 9 & Prime</div>
-                    <div class="course-item">SAP FICO Certification</div>
-                    <div class="course-item">Taxation (GST & Income Tax)</div>
-                    <div class="course-item">Financial Management</div>
-                    <div class="course-item">Advanced Excel for Finance</div>
+                    <div class="course-item" data-ar="Tally ERP 9 و Prime" data-en="Tally ERP 9 & Prime">Tally ERP 9 و Prime</div>
+                    <div class="course-item" data-ar="شهادة SAP FICO" data-en="SAP FICO Certification">شهادة SAP FICO</div>
+                    <div class="course-item" data-ar="الضرائب (GST وضريبة الدخل)" data-en="Taxation (GST & Income Tax)">الضرائب (GST وضريبة الدخل)</div>
+                    <div class="course-item" data-ar="الإدارة المالية" data-en="Financial Management">الإدارة المالية</div>
+                    <div class="course-item" data-ar="Excel المتقدم للمالية" data-en="Advanced Excel for Finance">Excel المتقدم للمالية</div>
                 </div>
                 <div class="dept-info">
-                    <span class="info-badge">6-12 Months</span>
-                    <span class="info-badge">₹45,000 - ₹95,000</span>
+                    <span class="info-badge" data-ar="6-12 شهر" data-en="6-12 Months">6-12 شهر</span>
+                    <span class="info-badge">45,000 - 95,000</span>
                 </div>
             </div>
 
             <!-- NURSING -->
             <div class="department-card">
                 <span class="dept-icon">⚕️</span>
-                <h3 class="dept-title">Nursing & Healthcare</h3>
+                <h3 class="dept-title" data-ar="التمريض والرعاية الصحية" data-en="Nursing & Healthcare">التمريض والرعاية الصحية</h3>
                 <div class="dept-courses">
-                    <div class="course-item">Clinical Skills & Patient Care</div>
-                    <div class="course-item">Anatomy & Physiology</div>
-                    <div class="course-item">Pharmacology</div>
-                    <div class="course-item">Emergency & Critical Care</div>
-                    <div class="course-item">400hrs Clinical Rotations</div>
+                    <div class="course-item" data-ar="المهارات السريرية ورعاية المرضى" data-en="Clinical Skills & Patient Care">المهارات السريرية ورعاية المرضى</div>
+                    <div class="course-item" data-ar="التشريح وعلم وظائف الأعضاء" data-en="Anatomy & Physiology">التشريح وعلم وظائف الأعضاء</div>
+                    <div class="course-item" data-ar="علم الأدوية" data-en="Pharmacology">علم الأدوية</div>
+                    <div class="course-item" data-ar="الطوارئ والرعاية الحرجة" data-en="Emergency & Critical Care">الطوارئ والرعاية الحرجة</div>
+                    <div class="course-item" data-ar="400 ساعة تدريب سريري" data-en="400hrs Clinical Rotations">400 ساعة تدريب سريري</div>
                 </div>
                 <div class="dept-info">
-                    <span class="info-badge">18 Months</span>
-                    <span class="info-badge">₹85,000</span>
+                    <span class="info-badge" data-ar="18 شهر" data-en="18 Months">18 شهر</span>
+                    <span class="info-badge">85,000</span>
                 </div>
             </div>
 
             <!-- HUMAN RESOURCES -->
             <div class="department-card">
                 <span class="dept-icon">👥</span>
-                <h3 class="dept-title">Human Resources</h3>
+                <h3 class="dept-title" data-ar="الموارد البشرية" data-en="Human Resources">الموارد البشرية</h3>
                 <div class="dept-courses">
-                    <div class="course-item">Recruitment & Talent Acquisition</div>
-                    <div class="course-item">Payroll Management</div>
-                    <div class="course-item">Labor Laws & Compliance</div>
-                    <div class="course-item">Organizational Behavior</div>
-                    <div class="course-item">HR Analytics & HRIS</div>
+                    <div class="course-item" data-ar="التوظيف واكتساب المواهب" data-en="Recruitment & Talent Acquisition">التوظيف واكتساب المواهب</div>
+                    <div class="course-item" data-ar="إدارة كشوف المرتبات" data-en="Payroll Management">إدارة كشوف المرتبات</div>
+                    <div class="course-item" data-ar="قوانين العمل والامتثال" data-en="Labor Laws & Compliance">قوانين العمل والامتثال</div>
+                    <div class="course-item" data-ar="السلوك التنظيمي" data-en="Organizational Behavior">السلوك التنظيمي</div>
+                    <div class="course-item" data-ar="تحليلات الموارد البشرية و HRIS" data-en="HR Analytics & HRIS">تحليلات الموارد البشرية و HRIS</div>
                 </div>
                 <div class="dept-info">
-                    <span class="info-badge">10-14 Months</span>
-                    <span class="info-badge">₹60,000 - ₹1,00,000</span>
+                    <span class="info-badge" data-ar="10-14 شهر" data-en="10-14 Months">10-14 شهر</span>
+                    <span class="info-badge">60,000 - 1,00,000</span>
+                </div>
+            </div>
+
+            <!-- ELECTRONICS MAINTENANCE -->
+            <div class="department-card">
+                <span class="dept-icon">🔧</span>
+                <h3 class="dept-title" data-ar="صيانة الأجهزة الإلكترونية" data-en="Electronic Devices Maintenance">صيانة الأجهزة الإلكترونية</h3>
+                <div class="dept-courses">
+                    <div class="course-item" data-ar="إصلاح الهواتف الذكية والأجهزة اللوحية" data-en="Smartphone & Tablet Repair">إصلاح الهواتف الذكية والأجهزة اللوحية</div>
+                    <div class="course-item" data-ar="صيانة أجهزة الكمبيوتر المحمولة" data-en="Laptop Maintenance">صيانة أجهزة الكمبيوتر المحمولة</div>
+                    <div class="course-item" data-ar="الدوائر الإلكترونية واللحام" data-en="Electronic Circuits & Soldering">الدوائر الإلكترونية واللحام</div>
+                    <div class="course-item" data-ar="استكشاف الأخطاء وإصلاحها" data-en="Troubleshooting & Diagnostics">استكشاف الأخطاء وإصلاحها</div>
+                    <div class="course-item" data-ar="تدريب عملي في ورش العمل" data-en="Hands-on Workshop Training">تدريب عملي في ورش العمل</div>
+                </div>
+                <div class="dept-info">
+                    <span class="info-badge" data-ar="8-12 شهر" data-en="8-12 Months">8-12 شهر</span>
+                    <span class="info-badge">55,000 - 85,000</span>
+                </div>
+            </div>
+
+            <!-- ELECTRICITY -->
+            <div class="department-card">
+                <span class="dept-icon">⚡</span>
+                <h3 class="dept-title" data-ar="الكهرباء والتركيبات الكهربائية" data-en="Electricity & Electrical Installation">الكهرباء والتركيبات الكهربائية</h3>
+                <div class="dept-courses">
+                    <div class="course-item" data-ar="الأساسيات الكهربائية والسلامة" data-en="Electrical Fundamentals & Safety">الأساسيات الكهربائية والسلامة</div>
+                    <div class="course-item" data-ar="التوصيلات الكهربائية المنزلية والصناعية" data-en="Residential & Industrial Wiring">التوصيلات الكهربائية المنزلية والصناعية</div>
+                    <div class="course-item" data-ar="المحركات الكهربائية والمحولات" data-en="Electric Motors & Transformers">المحركات الكهربائية والمحولات</div>
+                    <div class="course-item" data-ar="لوحات التحكم و PLC" data-en="Control Panels & PLC">لوحات التحكم و PLC</div>
+                    <div class="course-item" data-ar="الطاقة المتجددة والطاقة الشمسية" data-en="Renewable Energy & Solar Power">الطاقة المتجددة والطاقة الشمسية</div>
+                </div>
+                <div class="dept-info">
+                    <span class="info-badge" data-ar="10-15 شهر" data-en="10-15 Months">10-15 شهر</span>
+                    <span class="info-badge">65,000 - 1,10,000</span>
                 </div>
             </div>
         </div>
@@ -769,67 +898,69 @@
 
     <!-- FEATURES -->
     <section class="features-section">
-        <h2 class="section-title">Why Choose Inchon Institute?</h2>
+        <h2 class="section-title" data-ar="لماذا تختار معهد انشون؟" data-en="Why Choose Inchon Institute?">لماذا تختار معهد انشون؟</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🏆</div>
-                <h3 class="feature-title">Accredited Programs</h3>
-                <p class="feature-desc">Nationally recognized certifications accepted by top employers</p>
+                <h3 class="feature-title" data-ar="برامج معتمدة" data-en="Accredited Programs">برامج معتمدة</h3>
+                <p class="feature-desc" data-ar="شهادات معترف بها وطنياً ومقبولة من قبل كبرى الشركات" data-en="Nationally recognized certifications accepted by top employers">شهادات معترف بها وطنياً ومقبولة من قبل كبرى الشركات</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">👨‍🏫</div>
-                <h3 class="feature-title">Expert Faculty</h3>
-                <p class="feature-desc">Industry professionals with 10+ years experience</p>
+                <h3 class="feature-title" data-ar="هيئة تدريس خبيرة" data-en="Expert Faculty">هيئة تدريس خبيرة</h3>
+                <p class="feature-desc" data-ar="محترفون في الصناعة بخبرة تزيد عن 10 سنوات" data-en="Industry professionals with 10+ years experience">محترفون في الصناعة بخبرة تزيد عن 10 سنوات</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💼</div>
-                <h3 class="feature-title">Placement Support</h3>
-                <p class="feature-desc">85% placement rate with leading companies</p>
+                <h3 class="feature-title" data-ar="دعم التوظيف" data-en="Placement Support">دعم التوظيف</h3>
+                <p class="feature-desc" data-ar="معدل توظيف 85٪ مع شركات رائدة" data-en="85% placement rate with leading companies">معدل توظيف 85٪ مع شركات رائدة</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">⏰</div>
-                <h3 class="feature-title">Flexible Schedules</h3>
-                <p class="feature-desc">Weekend & evening batches for working professionals</p>
+                <h3 class="feature-title" data-ar="جداول مرنة" data-en="Flexible Schedules">جداول مرنة</h3>
+                <p class="feature-desc" data-ar="دفعات نهاية الأسبوع والمساء للمحترفين العاملين" data-en="Weekend & evening batches for working professionals">دفعات نهاية الأسبوع والمساء للمحترفين العاملين</p>
             </div>
         </div>
     </section>
 
     <!-- ADMISSIONS -->
     <section id="admissions" class="admissions-section">
-        <h2 class="section-title">Apply Now</h2>
+        <h2 class="section-title" data-ar="سجل الآن" data-en="Apply Now">سجل الآن</h2>
         <div class="admissions-content">
             <form>
                 <div class="form-grid">
                     <div class="form-group">
-                        <label>Full Name *</label>
-                        <input type="text" placeholder="Enter your full name" required>
+                        <label data-ar="الاسم الكامل *" data-en="Full Name *">الاسم الكامل *</label>
+                        <input type="text" placeholder="أدخل اسمك الكامل" required>
                     </div>
                     <div class="form-group">
-                        <label>Email *</label>
+                        <label data-ar="البريد الإلكتروني *" data-en="Email *">البريد الإلكتروني *</label>
                         <input type="email" placeholder="your.email@example.com" required>
                     </div>
                     <div class="form-group">
-                        <label>Phone Number *</label>
-                        <input type="tel" placeholder="+91 98765 43210" required>
+                        <label data-ar="رقم الهاتف *" data-en="Phone Number *">رقم الهاتف *</label>
+                        <input type="tel" placeholder="" required>
                     </div>
                     <div class="form-group">
-                        <label>Select Department *</label>
+                        <label data-ar="اختر القسم *" data-en="Select Department *">اختر القسم *</label>
                         <select required>
-                            <option value="">Choose a department</option>
-                            <option value="cs">Computer Science</option>
-                            <option value="accounting">Accounting & Finance</option>
-                            <option value="nursing">Nursing & Healthcare</option>
-                            <option value="hr">Human Resources</option>
+                            <option value="" data-ar="اختر قسماً" data-en="Choose a department">اختر قسماً</option>
+                            <option value="cs" data-ar="علوم الحاسوب" data-en="Computer Science">علوم الحاسوب</option>
+                            <option value="accounting" data-ar="المحاسبة والمالية" data-en="Accounting & Finance">المحاسبة والمالية</option>
+                            <option value="nursing" data-ar="التمريض والرعاية الصحية" data-en="Nursing & Healthcare">التمريض والرعاية الصحية</option>
+                            <option value="hr" data-ar="الموارد البشرية" data-en="Human Resources">الموارد البشرية</option>
+                            <option value="electronics" data-ar="صيانة الأجهزة الإلكترونية" data-en="Electronic Devices Maintenance">صيانة الأجهزة الإلكترونية</option>
+                            <option value="electricity" data-ar="الكهرباء والتركيبات" data-en="Electricity & Electrical Installation">الكهرباء والتركيبات</option>
                         </select>
                     </div>
                     <div class="form-group full-width">
-                        <label>Why do you want to join Inchon Institute?</label>
-                        <textarea placeholder="Tell us about your goals and aspirations..."></textarea>
+                        <label data-ar="لماذا تريد الانضمام إلى معهد انشون؟" data-en="Why do you want to join Inchon Institute?">لماذا تريد الانضمام إلى معهد انشون؟</label>
+                        <textarea placeholder="أخبرنا عن أهدافك وتطلعاتك..."></textarea>
                     </div>
                 </div>
                 <center>
                     <button type="submit" class="submit-btn">
-                        <span>SUBMIT APPLICATION</span>
+                        <span data-ar="إرسال الطلب" data-en="SUBMIT APPLICATION">إرسال الطلب</span>
                     </button>
                 </center>
             </form>
@@ -838,10 +969,10 @@
 
     <!-- MAP SECTION -->
     <section id="contact" class="map-section">
-        <h2 class="section-title">Visit Our Campus</h2>
+        <h2 class="section-title" data-ar="زر حرمنا الجامعي" data-en="Visit Our Campus">زر حرمنا الجامعي</h2>
         <div class="map-container">
             <iframe 
-                src="https://maps.app.goo.gl/z8xMDPLCTZkZhz1F8"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247094.55941033102!2d32.3599672!3d15.5006544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x168e8f6b7c8c7c8d%3A0x7f7f7f7f7f7f7f7f!2sKhartoum%2C%20Sudan!5e0!3m2!1sen!2sus!4v1707912345678!5m2!1sen!2sus"
                 allowfullscreen="" 
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
@@ -853,64 +984,101 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Contact Us</h3>
+                <h3 data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</h3>
                 <div class="contact-item">
                     <span class="contact-icon">📞</span>
-                    <span>+31 174 123 4567</span>
+                    <span>+249 91 291 7704</span>
                 </div>
                 <div class="contact-item">
                     <span class="contact-icon">✉️</span>
-                    <span>admissions@inchoninstitute.edu</span>
+                    <span>alnazeerhassan@gmail.com</span>
                 </div>
                 <div class="contact-item">
                     <span class="contact-icon">📍</span>
-                    <span>Naaldwijk, South Holland, Netherlands</span>
+                    <span data-ar="الخرطوم، السودان" data-en="Khartoum, Sudan">الخرطوم، السودان</span>
                 </div>
             </div>
 
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
                 <div class="quick-links">
-                    <a href="#home">Home</a>
-                    <a href="#courses">Course Catalog</a>
-                    <a href="#admissions">Apply Online</a>
-                    <a href="#">Student Portal</a>
-                    <a href="#">FAQs</a>
+                    <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+                    <a href="#courses" data-ar="كتالوج الدورات" data-en="Course Catalog">كتالوج الدورات</a>
+                    <a href="#admissions" data-ar="التقديم عبر الإنترنت" data-en="Apply Online">التقديم عبر الإنترنت</a>
+                    <a href="#" data-ar="بوابة الطلاب" data-en="Student Portal">بوابة الطلاب</a>
+                    <a href="#" data-ar="الأسئلة الشائعة" data-en="FAQs">الأسئلة الشائعة</a>
                 </div>
             </div>
 
             <div class="footer-section">
-                <h3>Departments</h3>
+                <h3 data-ar="الأقسام" data-en="Departments">الأقسام</h3>
                 <div class="quick-links">
-                    <a href="#">Computer Science</a>
-                    <a href="#">Accounting & Finance</a>
-                    <a href="#">Nursing & Healthcare</a>
-                    <a href="#">Human Resources</a>
+                    <a href="#" data-ar="علوم الحاسوب" data-en="Computer Science">علوم الحاسوب</a>
+                    <a href="#" data-ar="المحاسبة والمالية" data-en="Accounting & Finance">المحاسبة والمالية</a>
+                    <a href="#" data-ar="التمريض والرعاية الصحية" data-en="Nursing & Healthcare">التمريض والرعاية الصحية</a>
+                    <a href="#" data-ar="الموارد البشرية" data-en="Human Resources">الموارد البشرية</a>
+                    <a href="#" data-ar="صيانة الإلكترونيات" data-en="Electronics Maintenance">صيانة الإلكترونيات</a>
+                    <a href="#" data-ar="الكهرباء" data-en="Electricity">الكهرباء</a>
                 </div>
             </div>
 
             <div class="footer-section">
-                <h3>Accreditations</h3>
+                <h3 data-ar="الاعتمادات" data-en="Accreditations">الاعتمادات</h3>
                 <div class="quick-links">
-                    <a href="#">ISO 9001:2015 Certified</a>
-                    <a href="#">National Accreditation Board</a>
-                    <a href="#">Ministry of Education Approved</a>
-                    <a href="#">Industry Partnerships</a>
+                    <a href="#" data-ar="معتمد ISO 9001:2015" data-en="ISO 9001:2015 Certified">معتمد ISO 9001:2015</a>
+                    <a href="#" data-ar="مجلس الاعتماد الوطني" data-en="National Accreditation Board">مجلس الاعتماد الوطني</a>
+                    <a href="#" data-ar="معتمد من وزارة التربية والتعليم" data-en="Ministry of Education Approved">معتمد من وزارة التربية والتعليم</a>
+                    <a href="#" data-ar="شراكات صناعية" data-en="Industry Partnerships">شراكات صناعية</a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>© 2026 Inchon Institute. All Rights Reserved. | Privacy Policy | Terms & Conditions</p>
+            <p data-ar="© 2026 معهد انشون. جميع الحقوق محفوظة. | سياسة الخصوصية | الشروط والأحكام" data-en="© 2026 Inchon Institute. All Rights Reserved. | Privacy Policy | Terms & Conditions">© 2026 معهد انشون. جميع الحقوق محفوظة. | سياسة الخصوصية | الشروط والأحكام</p>
         </div>
     </footer>
 
     <!-- WHATSAPP FLOAT BUTTON -->
-    <a href="https://wa.me/31174123456" target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/249912917704" target="_blank" class="whatsapp-float">
         💬
     </a>
 
     <script>
+        // ============================================
+        // LANGUAGE TOGGLE
+        // ============================================
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const html = document.documentElement;
+            const langBtn = document.getElementById('langBtn');
+
+            if (currentLang === 'en') {
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                langBtn.textContent = 'عربي';
+                document.querySelector('.institute-name').textContent = 'INCHON INSTITUTE';
+            } else {
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                langBtn.textContent = 'EN';
+                document.querySelector('.institute-name').textContent = 'معهد انشون';
+            }
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-ar]').forEach(el => {
+                const text = currentLang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = text;
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = text;
+                } else {
+                    el.textContent = text;
+                }
+            });
+        }
+
         // ============================================
         // ANIMATED GALAXY CANVAS
         // ============================================
@@ -1022,7 +1190,10 @@
         // ============================================
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Application submitted successfully! Our admissions team will contact you within 24 hours.');
+            const msg = currentLang === 'ar' 
+                ? 'تم إرسال طلبك بنجاح! سيتصل بك فريق القبول لدينا خلال 24 ساعة.'
+                : 'Application submitted successfully! Our admissions team will contact you within 24 hours.';
+            alert(msg);
             this.reset();
         });
 
